@@ -98,4 +98,7 @@ pause;
 %end
 
 % Validation for Selecting Lambda
-validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
+%validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
+
+% Learning curve
+learningCurve(Ynorm, num_users, num_articles, num_features);
