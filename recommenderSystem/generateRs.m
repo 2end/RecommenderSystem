@@ -30,5 +30,5 @@ function generateRs(num_rows, num_cols)
   
   Rtest = R == Rval;
   
-  save("Rs.mat", "R", "Rval", "Rtest");
+ save("Rs.mat", "R", "Rval", "Rtest");
 end
