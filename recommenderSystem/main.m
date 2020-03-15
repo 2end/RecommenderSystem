@@ -9,33 +9,6 @@ checkCostFunction(1.5);
 
 articles = loadArticles();
 
-%  Initialize my ratings to articles
-my_ratings = zeros(50, 1);
-
-my_ratings(1) = 5;
-my_ratings(2) = 5;
-my_ratings(3) = 5;
-my_ratings(4)= 5;
-my_ratings(5) = 5;
-my_ratings(11)= 5;
-my_ratings(12)= 5;
-my_ratings(13) = 5;
-my_ratings(14) = 5;
-my_ratings(15) = 5;
-my_ratings(41)= 1;
-my_ratings(42)= 1;
-my_ratings(43)= 1;
-my_ratings(44)= 1;
-my_ratings(45)= 1;
-
-fprintf('\n\nMy ratings:\n');
-for i = 1:length(my_ratings)
-    if my_ratings(i) > 0 
-        fprintf('Rated %d for %s\n', my_ratings(i), ...
-                 articles{i});
-    end
-end
-
 fprintf('\nTraining collaborative filtering...\n');
 
 % Loading article ratings dataset
@@ -101,4 +74,38 @@ pause;
 %validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
 
 % Learning curve
-learningCurve(Ynorm, Rval, num_users, num_articles, num_features);
+%learningCurve(Ynorm, Rval, num_users, num_articles, num_features);
+
+%  Initialize my ratings to articles
+my_ratings = zeros(50, 1);
+
+my_ratings(31)= 5;
+my_ratings(32)= 5;
+my_ratings(33)= 5;
+my_ratings(34)= 5;
+my_ratings(35)= 5;
+my_ratings(41)= 5;
+my_ratings(42)= 5;
+my_ratings(43)= 5;
+my_ratings(44)= 5;
+my_ratings(45)= 5;
+
+fprintf('\n\nMy ratings:\n');
+for i = 1:length(my_ratings)
+    if my_ratings(i) > 0 
+        fprintf('Rated %d for %s\n', my_ratings(i), ...
+                 articles{i});
+    end
+end
+
+YOne = my_ratings;
+ROne = YOne != 0;
+ThetaOne = trainOne(YOne, ROne, X, lambda);
+pOne = X * ThetaOne' + Ymean;
+[r, ix] = sort(pOne, 'descend');
+fprintf('\nTop recommendations for me:\n');
+for i=1:50
+    j = ix(i);
+    fprintf('Predicting rating %.1f for article %s\n', pOne(j), ...
+            articles{j});
+end
