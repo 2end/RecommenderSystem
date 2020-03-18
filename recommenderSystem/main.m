@@ -98,9 +98,10 @@ for i = 1:length(my_ratings)
     end
 end
 
-YOne = my_ratings;
-ROne = YOne != 0;
-ThetaOne = trainOne(YOne, ROne, X, lambda);
+indexes = find(my_ratings > 0);
+YOne = my_ratings(indexes);
+XOne = X(indexes, :);
+ThetaOne = trainOne(YOne, XOne, lambda);
 pOne = X * ThetaOne' + Ymean;
 [r, ix] = sort(pOne, 'descend');
 fprintf('\nTop recommendations for me:\n');
