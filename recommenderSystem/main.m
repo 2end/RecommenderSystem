@@ -42,6 +42,8 @@ theta = train(Ynorm, R, num_users, num_articles, num_features, lambda);
 X = reshape(theta(1:num_articles*num_features), num_articles, num_features);
 Theta = reshape(theta(num_articles*num_features+1:end), ...
                 num_users, num_features);
+                
+save('-v7', 'trainedData.mat', 'X', 'Theta');
 
 fprintf('Recommender system learning completed.\n');
 
