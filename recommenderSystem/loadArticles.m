@@ -3,7 +3,7 @@ function articles = loadArticles()
 fid = fopen('articleNames.txt');
 
 % Number of articles 
-n = 50;
+n = 100;
 
 articles = cell(n, 1);
 for i = 1:n

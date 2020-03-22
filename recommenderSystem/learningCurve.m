@@ -1,9 +1,9 @@
-function learningCurve(Y, Rval, num_users, num_articles, num_features)
+function learningCurve(Y, Rdefault, Rval, num_users, num_articles, num_features)
 
 % Selected values of lambda
 lambda = 0.001;
 
-[k, l] = find(Rval == 0);
+[k, l] = find(Rdefault != 0);
 train_num_users = length(k);
 
 error_train = zeros(train_num_users, 1);

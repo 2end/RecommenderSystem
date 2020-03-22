@@ -13,7 +13,7 @@ fprintf('\nTraining collaborative filtering...\n');
 
 % Loading article ratings dataset
 load('articleRatings.mat');
-load('Rs.mat');
+%load('RsValidation.mat');
 
 %  Y is a 50x20 matrix, containing ratings (1-5) of 50 articles by 
 %  20 users
@@ -76,7 +76,7 @@ pause;
 %validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
 
 % Learning curve
-%learningCurve(Ynorm, Rval, num_users, num_articles, num_features);
+%learningCurve(Ynorm, R, Rval, num_users, num_articles, num_features);
 
 %  Initialize my ratings to articles
 my_ratings = zeros(50, 1);

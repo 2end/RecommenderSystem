@@ -1,4 +1,4 @@
-function generateRs(num_rows, num_cols)
+function generateRsValidation(num_rows, num_cols)
   train_coef = 0.6;
   val_coef = 0.2;
   num_elems = num_rows * num_cols;
@@ -30,5 +30,5 @@ function generateRs(num_rows, num_cols)
   
   Rtest = R == Rval;
   
- save("Rs.mat", "R", "Rval", "Rtest");
+ save("RsValidation.mat", "R", "Rval", "Rtest");
 end
