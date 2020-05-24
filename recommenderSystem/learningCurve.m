@@ -9,12 +9,16 @@ train_num_users = length(k);
 error_train = zeros(train_num_users, 1);
 error_val = zeros(train_num_users, 1);
 
+mval = sum(Rval(:) == 1);
+
 R = zeros(size(Rval));
 for i=1:train_num_users
   R(k(i), l(i)) = 1;
+  m = sum(R(:) == 1);
+  
   theta = train(Y, R, num_users, num_articles, num_features, lambda);
-  error_train(i) = cofiCostFunc(theta, Y, R, num_users, num_articles, num_features, 0);
-  error_val(i) = cofiCostFunc(theta, Y, Rval, num_users, num_articles, num_features, 0);
+  error_train(i) = cofiCostFunc(theta, Y, R, num_users, num_articles, num_features, 0) / m;
+  error_val(i) = cofiCostFunc(theta, Y, Rval, num_users, num_articles, num_features, 0) / mval;
 end
 
 display(error_train)

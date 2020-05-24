@@ -10,7 +10,7 @@ num_features = 5;
 [Ynorm, Ymean] = normalizeRatings(Y, ones(size(Y)));
   
 % Validation for Selecting Lambda
-validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
+%validationCurve(Ynorm, R, Rval, Rtest, num_users, num_articles, num_features);
 
 % Learning curve
-%learningCurve(Ynorm, R, Rval, num_users, num_articles, num_features);
+learningCurve(Ynorm, R, Rval, num_users, num_articles, num_features);

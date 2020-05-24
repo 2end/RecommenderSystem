@@ -13,12 +13,12 @@ mtest = sum(Rtest(:) == 1);
 for i=1:length(lambda_vec)
   lambda = lambda_vec(i);
   theta = train(Y, R, num_users, num_articles, num_features, lambda);
-  error_train(i) = sqrt(cofiCostFunc(theta, Y, R, num_users, num_articles, num_features, 0) / m);
-  error_val(i) = sqrt(cofiCostFunc(theta, Y, Rval, num_users, num_articles, num_features, 0) / mval);
+  error_train(i) = (cofiCostFunc(theta, Y, R, num_users, num_articles, num_features, 0) / m);
+  error_val(i) = (cofiCostFunc(theta, Y, Rval, num_users, num_articles, num_features, 0) / mval);
 end
 
 theta = train(Y, R, num_users, num_articles, num_features, lambda_test);
-error_test = sqrt(cofiCostFunc(theta, Y, Rtest, num_users, num_articles, num_features, 0) / mtest);
+error_test = (cofiCostFunc(theta, Y, Rtest, num_users, num_articles, num_features, 0) / mtest);
 
 display(error_train)
 display(error_val)
